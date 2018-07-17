@@ -1,0 +1,14 @@
+{
+  "name": "pokerevaluation",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Constantinos Stathis",
+  "license": "ISC",
+  "devDependencies": {
+    "shuffle-array": "^1.0.1"
+  }
+}
