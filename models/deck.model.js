@@ -1,4 +1,4 @@
-const { Suit } = require('./references'),
+const { Suit } = require('../references'),
     Card = require('./card.model'),
     shuffle = require('shuffle-array');
 
@@ -24,3 +24,5 @@ function generateSuitDeck(suit) {
     }
     return suitDeck;
 }
+
+module.exports = { generateDeck, generateShuffledDeck };

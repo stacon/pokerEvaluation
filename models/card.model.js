@@ -1,4 +1,4 @@
-const { OrderName, Suit } = require('./references/');
+const { OrderName, Suit } = require('../references');
 
 class Card {
     constructor(order, suit) {
