@@ -1,10 +1,10 @@
-const { Deck, Card } = require('./');
+const { handTypes } = require('../references/handTypes.reference');
 
 class Hand {
     constructor(deck) {
         this.deck = deck;
         this.cardsHolding = this.sortHand(this.takeFiveCards(deck));
-        this.handType;
+        this.handType = this.evaluate();
     }
     
     takeFiveCards(deck) {
@@ -15,8 +15,10 @@ class Hand {
         return cardsHolding.sort((cardA,cardB) => cardA.order - cardB.order);
     }
 
-    evaluate(cardsHolding) {
-        
+    evaluate() {
+        handTypes.forEach(handType => {
+            if(handType.evalFunction(this.cardsHolding)) console.log(handType.name);
+        });
     }
 }
 

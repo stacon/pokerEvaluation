@@ -1,36 +1,36 @@
-const { HandType } = require('../models');
+const handType = require('../models/handType.model');
 
-const HandTypes = [
-    royalFlush = new HandType(10, 'Royal Flush', sortedHand => {
+const handTypes = [
+    new handType(10, 'Royal Flush', sortedHand => {
         return everyCardIsSameSuit(sortedHand) && isRoyal(sortedHand);
     }),
-    straightFlush = new HandType(9,  'Straight Flush', sortedHand => {
+    new handType(9,  'Straight Flush', sortedHand => {
         return everyCardIsSameSuit(sortedHand) && isStraight(sortedHand);
     }),
-    fourOfAKind = new HandType(8,  'Four of a kind', sortedHand => {
-        groupedByValueSets(sortedHand).forEach(group =>)
+    new handType(8,  'Four of a kind', sortedHand => {
+        return hasFourOfAkind(sortedHand);
     }),
-    fullHouse = new HandType(7,  'Full House', sortedHand => {
-
+    new handType(7,  'Full House', sortedHand => {
+        return hasFullHouse(sortedHand);
     }),
-    flush = new HandType(6,  'Flush', sortedHand => {
-
+    new handType(6,  'Flush', sortedHand => {
+        return everyCardIsSameSuit(sortedHand);
     }),
-    straight =      new HandType(5,  'Straight', sortedHand => {
-
+    new handType(5,  'Straight', sortedHand => {
+        return isStraight(sortedHand);
     }),
-    threeOfAKind =  new HandType(4,  'Three of a Kind', sortedHand => {
-
+    new handType(4,  'Three of a Kind', sortedHand => {
+        return isThreeOfAkind(sortedHand);
     }),
-    twoPairs =      new HandType(3,  'Two Pairs', sortedHand => {
-
+    new handType(3,  'Two Pairs', sortedHand => {
+        return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 2) === 2;
     }),
-    οnePair =       new HandType(2,  'One Pair', sortedHand => {
-
+    new handType(2,  'One Pair', sortedHand => {
+        return isPair(sortedHand);
     }),
-    highCard =      new HandType(1,  'High Card', sortedHand => {
-
-    }),
+    new handType(1,  'High Card', () => {
+        return true;
+    })
 ];
 
 function everyCardIsSameSuit(sortedHand) {
@@ -52,12 +52,22 @@ function isStraight(sortedHand) {
     return sortedHand[0].value + 4 === sortedHand[4].value;
 }
 
-//TODO: Remove After
-const { generateShuffledDeck, Hand } = require('../models');
-const deck = generateShuffledDeck();
-const hand = new Hand(deck);
+function hasFullHouse(sortedHand) {
+    return isThreeOfAkind(sortedHand) && isPair(sortedHand);
+}
 
-console.log(groupedByValueSets(hand.cardsHolding));
+function isThreeOfAkind(sortedHand) {
+    return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 3) === 1;
+}
+
+function isPair(sortedHand) {
+    return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 2) === 1;
+}
+
+function hasFourOfAkind(sortedHand) {
+    const result = Object.values(groupedByValueSets(sortedHand)).filter(value => value === 4);
+    return !result.length  === 1
+}
 
 function groupedByValueSets(sortedHand) {
     let counts = {};
@@ -66,3 +76,5 @@ function groupedByValueSets(sortedHand) {
     });
     return counts;
 }
+
+module.exports = { handTypes };
