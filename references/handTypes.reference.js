@@ -23,7 +23,7 @@ const handTypes = [
         return isThreeOfAkind(sortedHand);
     }),
     new handType(3,  'Two Pairs', sortedHand => {
-        return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 2) === 2;
+        return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 2).length === 2;
     }),
     new handType(2,  'One Pair', sortedHand => {
         return isPair(sortedHand);
@@ -49,7 +49,7 @@ function isRoyal(sortedHand) {
 }
 
 function isStraight(sortedHand) {
-    return sortedHand[0].value + 4 === sortedHand[4].value;
+    return sortedHand[0].value + 4 === sortedHand[4].value; //TODO: This is wrongs
 }
 
 function hasFullHouse(sortedHand) {
@@ -57,11 +57,11 @@ function hasFullHouse(sortedHand) {
 }
 
 function isThreeOfAkind(sortedHand) {
-    return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 3) === 1;
+    return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 3).length === 1;
 }
 
 function isPair(sortedHand) {
-    return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 2) === 1;
+    return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 2).length === 1;
 }
 
 function hasFourOfAkind(sortedHand) {
