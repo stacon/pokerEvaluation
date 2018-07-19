@@ -1,5 +1,4 @@
-const { generateDeck, generateShuffledDeck } = require('./models');
+const { generateShuffledDeck, Hand } = require('./models');
 
-console.log(generateDeck());
-console.log('}}========================================================{{');
-console.log(generateShuffledDeck());
+const deck = generateShuffledDeck();
+const hand = new Hand(deck);

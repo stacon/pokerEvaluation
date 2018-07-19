@@ -1,4 +1,6 @@
 const { generateDeck, generateShuffledDeck } = require('./deck.model'),
-Card = require('./card.model');
+Card = require('./card.model'),
+Hand = require('./hand.model'),
+HandType = require('./handType.model')
 
-module.exports = {generateDeck, generateShuffledDeck, Card};
+module.exports = {generateDeck, generateShuffledDeck, Card, Hand, HandType};
