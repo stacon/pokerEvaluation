@@ -1,15 +1,16 @@
 const { handTypes } = require('../references/handTypes.reference');
 
 class Hand {
-    constructor(deck) {
-        this.deck = deck;
-        this.cardsHolding = this.sortHand(this.takeFiveCards(deck));
-        this.handType = this.getHandType();
-        this.cardsHoldingNames = this.cardsHolding.map(card => card.name);
+    constructor(cards = []) {
+        this.cards = cards;
+        if (!this.hasCards()) return;
+        this.takeFiveCards(cards);
     }
-    
-    takeFiveCards(deck) {
-        return deck.splice(0, 5);
+
+    takeFiveCards(cards) {
+        this.cards = this.sortHand(cards);
+        this.handType = this.getHandType();
+        this.cardNames = this.cards.map(card => card.name);
     }
 
     sortHand(cardsHolding) {
@@ -17,7 +18,11 @@ class Hand {
     }
 
     getHandType() {
-       return handTypes.find(handType => handType.evalFunction(this.cardsHolding)).name;
+       return handTypes.find(handType => handType.evalFunction(this.cards)).name;
+    }
+
+    hasCards() {
+        return this.cards.length > 0
     }
 }
 

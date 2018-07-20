@@ -1,5 +1,6 @@
-const { generateDeck, generateShuffledDeck } = require('./deck.model'),
-    Hand= require('./hand.model'),
-    handType = require('./handType.model');
+const   Card = require('./Card.model'),
+        Deck = require('./Deck.model'),
+        Hand = require('./Hand.model'),
+        HandType = require('./HandType.model');
 
-module.exports = { generateDeck, generateShuffledDeck, Hand, handType};
+module.exports = { Card, Deck, Hand, HandType };

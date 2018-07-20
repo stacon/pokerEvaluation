@@ -1,5 +1,5 @@
-const { OrderName }  = require('./orderName.reference');
-const { Suit } = require('./suit.reference');
-const handTypes = require('./handTypes.reference');
+const { OrderName }  = require('./orderName.reference'),
+      { Suit } = require('./suit.reference'),
+      { handTypes } = require('./handTypes.reference');
 
-module.exports = { OrderName, Suit };
+module.exports = { OrderName, Suit, handTypes };

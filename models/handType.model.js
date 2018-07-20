@@ -1,4 +1,4 @@
-class handType {
+class HandType {
     constructor(rank,name,evalFunction) {
         this.rank = rank;
         this.name = name;
@@ -6,4 +6,4 @@ class handType {
     }
 }
 
-module.exports = handType;
+module.exports = HandType;

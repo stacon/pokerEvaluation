@@ -1,34 +1,34 @@
-const handType = require('../models/handType.model');
+const HandType = require('../models/HandType.model');
 
 const handTypes = [
-    new handType(10, 'Royal Flush', sortedHand => {
+    new HandType(10, 'Royal Flush', sortedHand => {
         return everyCardIsSameSuit(sortedHand) && isRoyal(sortedHand);
     }),
-    new handType(9,  'Straight Flush', sortedHand => {
+    new HandType(9,  'Straight Flush', sortedHand => {
         return everyCardIsSameSuit(sortedHand) && isStraight(sortedHand);
     }),
-    new handType(8,  'Four of a kind', sortedHand => {
+    new HandType(8,  'Four of a kind', sortedHand => {
         return hasFourOfAkind(sortedHand);
     }),
-    new handType(7,  'Full House', sortedHand => {
+    new HandType(7,  'Full House', sortedHand => {
         return hasFullHouse(sortedHand);
     }),
-    new handType(6,  'Flush', sortedHand => {
+    new HandType(6,  'Flush', sortedHand => {
         return everyCardIsSameSuit(sortedHand);
     }),
-    new handType(5,  'Straight', sortedHand => {
+    new HandType(5,  'Straight', sortedHand => {
         return isStraight(sortedHand);
     }),
-    new handType(4,  'Three of a Kind', sortedHand => {
+    new HandType(4,  'Three of a Kind', sortedHand => {
         return isThreeOfAkind(sortedHand);
     }),
-    new handType(3,  'Two Pairs', sortedHand => {
+    new HandType(3,  'Two Pairs', sortedHand => {
         return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 2).length === 2;
     }),
-    new handType(2,  'One Pair', sortedHand => {
+    new HandType(2,  'One Pair', sortedHand => {
         return isPair(sortedHand);
     }),
-    new handType(1,  'High Card', () => {
+    new HandType(1,  'High Card', () => {
         return true;
     })
 ];
@@ -49,7 +49,11 @@ function isRoyal(sortedHand) {
 }
 
 function isStraight(sortedHand) {
-    return sortedHand[0].value + 4 === sortedHand[4].value; //TODO: This is wrongs
+    return sortedHand.reduce((isStraight, currentCard, i, arr)=>{
+        if (i === 0) return isStraight && true;
+        if (arr[i-1].order + 1 === arr[i].order) return isStraight && true;
+        return isStraight && false;
+    }, true);
 }
 
 function hasFullHouse(sortedHand) {
