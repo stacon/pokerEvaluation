@@ -27,7 +27,7 @@ hand5.takeCards(deck.dealFiveCards());                          // hand5 takes 5
 
 
 
-//===================== Method 1: Shorthand =================================================================//
+//===================== Method 2: Shorthand =================================================================//
 // METH2: START (Comment out from the line 26 to 30 for example)
 // const hand1 = new Hand(deck.dealFiveCards());                       // hand1 takes five cards from the deck
 // const hand2 = new Hand(deck.dealFiveCards());                       // hand2 takes five cards from the deck

@@ -38,7 +38,7 @@ function everyCardIsSameSuit(sortedHand) {
     return sortedHand.every(card => card.suit === firstCardSuit);
 }
 
-function isRoyal(sortedHand) {
+function isRoyal(sortedHand) { //TODO: This is wrong
     if (sortedHand[0].value === 14 &&
         sortedHand[0].order === 1 &&
         sortedHand[4].value === 13 &&
