@@ -7,7 +7,11 @@ class Deck {
         this.cards = this.generateShuffledDeck();
     }
 
-    dealCards(number = 5) {
+    dealFiveCards() {
+        return this.dealCards(5);
+    }
+
+    dealCards(number) {
         return this.cards.splice(0,number)
     }
 

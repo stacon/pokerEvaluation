@@ -4,10 +4,10 @@ class Hand {
     constructor(cards = []) {
         this.cards = cards;
         if (!this.hasCards()) return;
-        this.takeFiveCards(cards);
+        this.takeCards(cards);
     }
 
-    takeFiveCards(cards) {
+    takeCards(cards) {
         this.cards = this.sortHand(cards);
         this.handType = this.getHandType();
         this.cardNames = this.cards.map(card => card.name);

@@ -4,11 +4,9 @@ const deck = new Deck();                                        // Creating a ne
 console.log(deck.cards.length);                                 // expecting 52
 
 
-
 //========================== Example ====================================//
 //    Use one method at a time by commenting out the suggested lines     //
 //========================== Example ====================================//
-
 
 
 //===================== Method 1: Descriptive ===============================================================//
@@ -19,11 +17,11 @@ const hand3 = new Hand();                                       // hand3 has bee
 const hand4 = new Hand();                                       // hand4 has been constructed waiting for cards
 const hand5 = new Hand();                                       // hand5 has been constructed waiting for cards
 
-hand1.takeFiveCards(deck.dealCards());                          // hand1 takes 5 cards from the dealing deck
-hand2.takeFiveCards(deck.dealCards());                          // hand2 takes 5 cards from the dealing deck
-hand3.takeFiveCards(deck.dealCards());                          // hand3 takes 5 cards from the dealing deck
-hand4.takeFiveCards(deck.dealCards());                          // hand4 takes 5 cards from the dealing deck
-hand5.takeFiveCards(deck.dealCards());                          // hand5 takes 5 cards from the dealing deck
+hand1.takeCards(deck.dealFiveCards());                          // hand1 takes 5 cards from the dealing deck
+hand2.takeCards(deck.dealFiveCards());                          // hand2 takes 5 cards from the dealing deck
+hand3.takeCards(deck.dealFiveCards());                          // hand3 takes 5 cards from the dealing deck
+hand4.takeCards(deck.dealFiveCards());                          // hand4 takes 5 cards from the dealing deck
+hand5.takeCards(deck.dealFiveCards());                          // hand5 takes 5 cards from the dealing deck
 // METH1: END
 //===========================================================================================================//
 
@@ -31,11 +29,11 @@ hand5.takeFiveCards(deck.dealCards());                          // hand5 takes 5
 
 //===================== Method 1: Shorthand =================================================================//
 // METH2: START (Comment out from the line 26 to 30 for example)
-// const hand1 = new Hand(deck.dealCards());                       // hand1 takes five cards from the deck
-// const hand2 = new Hand(deck.dealCards());                       // hand2 takes five cards from the deck
-// const hand3 = new Hand(deck.dealCards());                       // hand3 takes five cards from the deck
-// const hand4 = new Hand(deck.dealCards());                       // hand4 takes five cards from the deck
-// const hand5 = new Hand(deck.dealCards());                       // hand5 takes five cards from the deck
+// const hand1 = new Hand(deck.dealFiveCards());                       // hand1 takes five cards from the deck
+// const hand2 = new Hand(deck.dealFiveCards());                       // hand2 takes five cards from the deck
+// const hand3 = new Hand(deck.dealFiveCards());                       // hand3 takes five cards from the deck
+// const hand4 = new Hand(deck.dealFiveCards());                       // hand4 takes five cards from the deck
+// const hand5 = new Hand(deck.dealFiveCards());                       // hand5 takes five cards from the deck
 // METH2: END
 //===========================================================================================================//
 
