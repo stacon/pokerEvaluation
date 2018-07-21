@@ -8,7 +8,7 @@
   },
   "author": "Constantinos Stathis",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "shuffle-array": "^1.0.1"
   }
 }
