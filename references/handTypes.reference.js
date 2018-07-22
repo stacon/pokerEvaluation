@@ -39,13 +39,13 @@ function everyCardIsSameSuit(sortedHand) {
 }
 
 function isRoyal(sortedHand) { //TODO: This is wrong
-    if (sortedHand[0].value === 14 &&
-        sortedHand[0].order === 1 &&
-        sortedHand[4].value === 13 &&
-        sortedHand[4].order === 13){
-            return true;
-        }
-    return false;
+    if (sortedHand[0].value !==14) return false;
+    const sortedHandByValue = sortedHand.slice().sort((cardA,cardB) => cardA.value - cardB.value);
+    return sortedHandByValue.reduce((isRoyal, currentCard, i, arr)=>{
+        if (i === 0) return isRoyal && true;
+        if (arr[i-1].value + 1 === arr[i].value) return isRoyal && true;
+        return isRoyal && false;
+    }, true);
 }
 
 function isStraight(sortedHand) {
@@ -69,8 +69,7 @@ function isPair(sortedHand) {
 }
 
 function hasFourOfAkind(sortedHand) {
-    const result = Object.values(groupedByValueSets(sortedHand)).filter(value => value === 4);
-    return !result.length  === 1
+    return Object.values(groupedByValueSets(sortedHand)).filter(value => value === 4).length === 1;
 }
 
 function groupedByValueSets(sortedHand) {
